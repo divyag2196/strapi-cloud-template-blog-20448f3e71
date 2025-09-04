@@ -1,6 +1,6 @@
-module.exports = {
-  async beforeCreate(event) {
-    // Automatically publish new Contact entries
+export default {
+  beforeCreate(event) {
+    // Auto-publish contacts by setting publishedAt
     if (!event.params.data.publishedAt) {
       event.params.data.publishedAt = new Date();
     }
