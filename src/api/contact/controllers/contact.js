@@ -44,7 +44,6 @@
 //     }
 //   },
 // }));
-
 'use strict';
 
 const { createCoreController } = require('@strapi/strapi').factories;
@@ -54,7 +53,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     try {
       const { name, email, phone, action, message } = ctx.request.body;
 
-      // Save contact data in DB
+      // Save data into Contact collection
       const entry = await strapi.db.query('api::contact.contact').create({
         data: { name, email, phone, action, message },
       });
@@ -66,4 +65,3 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     }
   },
 }));
-
