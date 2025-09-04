@@ -514,7 +514,7 @@ export interface ApiContactContact extends Struct.CollectionTypeSchema {
     singularName: 'contact';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     action: Schema.Attribute.Enumeration<['buy', 'sell']>;
