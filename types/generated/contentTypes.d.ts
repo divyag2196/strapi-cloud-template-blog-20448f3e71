@@ -506,38 +506,6 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactContact extends Struct.CollectionTypeSchema {
-  collectionName: 'contacts';
-  info: {
-    displayName: 'Contact';
-    pluralName: 'contacts';
-    singularName: 'contact';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    action: Schema.Attribute.Enumeration<['buy', 'sell']>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact.contact'
-    > &
-      Schema.Attribute.Private;
-    message: Schema.Attribute.Text;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1115,7 +1083,6 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
-      'api::contact.contact': ApiContactContact;
       'api::global.global': ApiGlobalGlobal;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
