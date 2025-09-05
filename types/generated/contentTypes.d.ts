@@ -570,41 +570,6 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
-  collectionName: 'orders';
-  info: {
-    displayName: 'Order';
-    pluralName: 'orders';
-    singularName: 'order';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    customerName: Schema.Attribute.String & Schema.Attribute.Required;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
-    items: Schema.Attribute.JSON & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
-      Schema.Attribute.Private;
-    phoneNumber: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    razorpayOrderId: Schema.Attribute.String;
-    razorpayPaymentId: Schema.Attribute.String;
-    status: Schema.Attribute.Enumeration<
-      ['pending', 'paid', 'shipped', 'delivered']
-    > &
-      Schema.Attribute.DefaultTo<'pending'>;
-    total: Schema.Attribute.Decimal & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1152,7 +1117,6 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
       'api::global.global': ApiGlobalGlobal;
-      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
